@@ -14,6 +14,7 @@ SUBSCRIBER -> QUEUE -> CLIENT
  - SUBSCRIBER указаны в конфиге subscribers.json.
  - QUEUE реплицируется (доп.).
  - Клиенту (пока) доступны все сервисы.
+ - KV кэширование сообщений (доп.)
 
 Сценарии CLIENT:
 
@@ -26,4 +27,17 @@ SUBSCRIBER -> QUEUE -> CLIENT
  - SendMessage : (name, query) -> err
  - RecieveMessage : (name) -> chan <-response, err
 
+QUEUE:
 
+Обрабатывает сообщения (Message):
+
+```
+type Message struct {
+           []rune payload
+           int id
+           int sender
+           int reciever
+}
+```
+
+Для каждого подписчика $S_i$ определена очередь $Q_i$, сообщения, адресованные $S_i$ от клиента $C_j$ складываются $Q_ij$
