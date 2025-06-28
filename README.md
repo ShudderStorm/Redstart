@@ -16,10 +16,12 @@ SUBSCRIBER -> QUEUE -> CLIENT
  - Клиенту (пока) доступны все сервисы.
 
 Сценарии CLIENT:
+
 под капотом:
  - discoverSubscribers : map (name, id), err
  - sendMessage : (id, query), err
  - recieveMessage : response, err
+
 пользовательские:
  - SendMessage : (name, query) -> err
  - RecieveMessage : (name) -> chan <-response, err
